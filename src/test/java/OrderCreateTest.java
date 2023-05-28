@@ -1,4 +1,3 @@
-import io.qameta.allure.Step;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
 import org.junit.After;
@@ -18,7 +17,7 @@ public class OrderCreateTest {
 
     private UserClient userClient;
     private String accessToken;
-    private List<String> listIngredients;
+    private final List<String> listIngredients;
 
 
     public OrderCreateTest(List<String> listIngredients){

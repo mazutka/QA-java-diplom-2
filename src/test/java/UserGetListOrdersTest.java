@@ -3,7 +3,6 @@ import io.restassured.response.ValidatableResponse;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runners.Parameterized;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +29,6 @@ public class UserGetListOrdersTest {
         Order order;
         expOrdersNumbersList = new ArrayList<>();
         for (int i = 1; i < 4; i++) {
-            List<String> listIngredients = new ArrayList<>();
             order = new Order(IngredientsListGenerator.randomIngredientsList(i,false));
             orderResponse = orderClient.createOrder(accessToken, order);
             expOrdersNumbersList.add(orderResponse.extract().path("order.number"));
@@ -47,7 +45,7 @@ public class UserGetListOrdersTest {
         ValidatableResponse orderResponse = orderClient.getUserOrders(accessToken);
         int statusCode = orderResponse.extract().statusCode();
         boolean isGetOrdersList = orderResponse.extract().path("success");
-        List<String> actOrdersNumbersList = orderResponse.extract().jsonPath().getList("orders.number");
+        List<Integer> actOrdersNumbersList = orderResponse.extract().jsonPath().getList("orders.number");
         assertEquals(SC_OK, statusCode);
         assertTrue(isGetOrdersList);
         assertEquals(expOrdersNumbersList.size(),actOrdersNumbersList.size());

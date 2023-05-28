@@ -1,4 +1,3 @@
-import io.restassured.authentication.OAuthSignature;
 import io.restassured.http.Header;
 import io.restassured.response.ValidatableResponse;
 
