@@ -1,3 +1,4 @@
+import com.github.javafaker.Faker;
 import org.apache.commons.lang3.RandomStringUtils;
 
 public class UserGenerator {
@@ -18,15 +19,18 @@ public class UserGenerator {
     }
 
     public static String getRandomEmail(){
-        return RandomStringUtils.randomAlphanumeric(10)+"@mail.ru";
+        Faker faker = new Faker();
+        return faker.internet().emailAddress();
     }
 
     public static String getRandomPassword(){
-        return RandomStringUtils.randomAlphanumeric(10);
+        Faker faker = new Faker();
+        return faker.internet().password(8,16,true,true,true);
     }
 
     public static String getRandomName(){
-        return RandomStringUtils.randomAlphanumeric(10);
+        Faker faker = new Faker();
+        return faker.address().firstName();
     }
 
     public static User getRandomUserOnlyName(){
@@ -34,11 +38,11 @@ public class UserGenerator {
     }
 
     public static User getRandomUserOnlyEmail(){
-        return new User(RandomStringUtils.randomAlphanumeric(10)+"@mail.ru",null,null);
+        return new User(UserGenerator.getRandomEmail(),null,null);
     }
 
     public static User getRandomUserOnlyPassword(){
-        return new User(null,RandomStringUtils.randomAlphanumeric(10),null);
+        return new User(null,UserGenerator.getRandomPassword(),null);
     }
 
 }
