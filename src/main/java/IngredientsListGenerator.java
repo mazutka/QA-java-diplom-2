@@ -1,6 +1,5 @@
 import com.github.javafaker.Faker;
 import io.restassured.response.ValidatableResponse;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
 
 import java.util.ArrayList;
